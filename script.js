@@ -18,9 +18,12 @@ function debounce(callback, delay, immediate = false) {
   
   module.exports = debounce;
 
+let counter = 0;
+const callback = () => console.log(counter++);
+const debouncedCallback = debounce(callback, 1000);
 
-const debouncedFunction = debounce(() => console.log('Called!'), 1000, true);
-
-debouncedFunction(); // Should log immediately
-setTimeout(debouncedFunction, 500);  // Should not log
-setTimeout(debouncedFunction, 1500); // Should log after delay
+// Call the debounced function instead of the original callback
+debouncedCallback();
+debouncedCallback();
+debouncedCallback();
+// "0" will be printed to the console once after 1 second

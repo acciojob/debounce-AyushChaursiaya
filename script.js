@@ -16,7 +16,7 @@ function debounce(callback, delay, immediate = false) {
 	  }
   }
   
-  module.exports = debounce;
+  // module.exports = debounce;
 
 let counter = 0;
 const callback = () => console.log(counter++);

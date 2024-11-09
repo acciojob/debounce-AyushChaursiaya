@@ -9,9 +9,7 @@ function debounce(callback, delay, immediate = false) {
 
 		  timeOut = setTimeout(() => {
 			  timeOut = null;
-			  if(!immediate) {
-				  callback.apply(context, args);
-			  }
+			  if(!immediate) callback.apply(context, args);
 		  }, delay);
 
 		  if(callNow) callback.apply(context, args);

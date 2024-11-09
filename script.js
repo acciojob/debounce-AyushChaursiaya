@@ -1,9 +1,10 @@
 function debounce(callback, delay, immediate = false) {
   let timeOut = null;
+  let firstCall = true;
 
   return function(...args) {
     const context = this;
-    const callNow = immediate && !timeOut;
+    const callNow = immediate && (firstCall || !timeOut);
 
     clearTimeout(timeOut);
 
@@ -12,7 +13,10 @@ function debounce(callback, delay, immediate = false) {
       timeOut = null;
     }, delay);
 
-    if (callNow) callback.apply(context, args);
+    if (callNow) {
+      callback.apply(context, args);
+      firstCall = false;
+    }
   };
 }
   

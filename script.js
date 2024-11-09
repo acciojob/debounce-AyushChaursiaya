@@ -1,5 +1,5 @@
 function debounce(callback, delay, immediate = false) {
-	  let timeOut;
+	  let timeOut = null;
 	
 	  return function(...args) {
 		  const context = this;
@@ -8,8 +8,8 @@ function debounce(callback, delay, immediate = false) {
 		  clearTimeout(timeOut);
 
 		  timeOut = setTimeout(() => {
-			  timeOut = null;
 			  if(!immediate) callback.apply(context, args);
+			  timeOut = null;
 		  }, delay);
 
 		  if(callNow) callback.apply(context, args);

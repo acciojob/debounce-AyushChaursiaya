@@ -17,3 +17,7 @@ function debounce(callback, delay, immediate = false) {
   }
   
   module.exports = debounce;
+
+const log = debounce(() => console.log('Debounced!'), 1000);
+
+log();

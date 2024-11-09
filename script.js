@@ -1,20 +1,20 @@
 function debounce(callback, delay, immediate = false) {
-	  let timeOut = null;
-	
-	  return function(...args) {
-		  const context = this;
-		  const callNow = immediate && !timeOut;
+  let timeOut = null;
 
-		  clearTimeout(timeOut);
+  return function(...args) {
+    const context = this;
+    const callNow = immediate && !timeOut;
 
-		  timeOut = setTimeout(() => {
-			  if(!immediate) callback.apply(context, args);
-			  timeOut = null;
-		  }, delay);
+    clearTimeout(timeOut);
 
-		  if(callNow) callback.apply(context, args);
-	  }
-  }
+    timeOut = setTimeout(() => {
+      if (!immediate) callback.apply(context, args);
+      timeOut = null;
+    }, delay);
+
+    if (callNow) callback.apply(context, args);
+  };
+}
   
   module.exports = debounce;
 
